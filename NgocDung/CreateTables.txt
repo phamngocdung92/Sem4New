@@ -1,0 +1,48 @@
+// create user table
+CREATE TABLE User (
+    userId INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    firstname VARCHAR(50),
+    lastname VARCHAR(50),
+    address VARCHAR(255),
+    departmentId INT,
+    createdBy INT,
+    createdTime DATETIME,
+    updatedBy INT,
+    updatedTime DATETIME,
+    FOREIGN KEY (departmentId) REFERENCES Department(departmentId)
+);
+
+// create department table
+CREATE TABLE Department (
+    departmentId INT PRIMARY KEY AUTO_INCREMENT,
+    departmentName VARCHAR(100) NOT NULL,
+    companyId INT,
+    createdBy INT,
+    createdTime DATETIME,
+    updatedBy INT,
+    updatedTime DATETIME,
+    FOREIGN KEY (companyId) REFERENCES Company(companyId)
+);
+
+// create company table
+CREATE TABLE Company (
+    companyId INT PRIMARY KEY AUTO_INCREMENT,
+    companyName VARCHAR(100) NOT NULL,
+    corporationId INT,
+    createdBy INT,
+    createdTime DATETIME,
+    updatedBy INT,
+    updatedTime DATETIME,
+    FOREIGN KEY (corporationId) REFERENCES Corporation(corporationId)
+);
+
+// create corporation table
+CREATE TABLE Corporation (
+    corporationId INT PRIMARY KEY AUTO_INCREMENT,
+    corporationName VARCHAR(100) NOT NULL,
+    createdBy INT,
+    createdTime DATETIME,
+    updatedBy INT,
+    updatedTime DATETIME,
+);
