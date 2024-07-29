@@ -1,20 +1,20 @@
 package T2208E.Sub2Exam.NgocDung.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
-public class Employee {
-
+@Table(name = "corporations")
+public class CorporationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Double wage;
 
-    // Getters and Setters
+    @OneToMany(mappedBy = "corporation")
+    private List<CompanyEntity> companies;
+
     public Long getId() {
         return id;
     }
@@ -31,11 +31,11 @@ public class Employee {
         this.name = name;
     }
 
-    public Double getWage() {
-        return wage;
+    public List<CompanyEntity> getCompanies() {
+        return companies;
     }
 
-    public void setWage(Double wage) {
-        this.wage = wage;
+    public void setCompanies(List<CompanyEntity> companies) {
+        this.companies = companies;
     }
 }

@@ -1,15 +1,14 @@
 package T2208E.Sub2Exam.NgocDung.service.UserService;
 
-import T2208E.Sub2Exam.NgocDung.dto.UserDTO;
-import org.springframework.stereotype.Service;
+import T2208E.Sub2Exam.NgocDung.dto.UserDto;
 
 import java.util.List;
 
-
 public interface UserService {
-    public List<UserDTO> getAllUsers();
-    public String addUser(UserDTO dto);
-    public String updateUser(long userId, UserDTO dto);
-    public UserDTO getUserDetailById(long userId);
-    public UserDTO getUserDetailByName(String userName);
+    UserDto createUser(UserDto userDto);
+    UserDto updateUser(UserDto userDto);
+    UserDto getUserById(Long id);
+    UserDto getUserByAddress(String address);
+    List<UserDto> getAllUsers();
+    void deleteUserById(Long id);
 }
