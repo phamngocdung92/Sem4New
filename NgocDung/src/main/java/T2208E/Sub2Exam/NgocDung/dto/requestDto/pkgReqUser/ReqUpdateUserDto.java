@@ -1,26 +1,16 @@
-package T2208E.Sub2Exam.NgocDung.dto;
+package T2208E.Sub2Exam.NgocDung.dto.requestDto.pkgReqUser;
 
 import java.time.LocalDateTime;
 
-public class UserDto extends ShowingResultDto {
-    private Long id;
+public class ReqUpdateUserDto {
     private String username;
     private String firstname;
     private String lastname;
     private String address;
-    private String createdBy;
-    private LocalDateTime createdTime;
     private String updatedBy;
     private LocalDateTime updatedTime;
     private Long departmentId;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private String updateResult;
 
     public String getUsername() {
         return username;
@@ -54,22 +44,6 @@ public class UserDto extends ShowingResultDto {
         this.address = address;
     }
 
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public LocalDateTime getCreatedTime() {
-        return createdTime;
-    }
-
-    public void setCreatedTime(LocalDateTime createdTime) {
-        this.createdTime = createdTime;
-    }
-
     public String getUpdatedBy() {
         return updatedBy;
     }
@@ -92,5 +66,13 @@ public class UserDto extends ShowingResultDto {
 
     public void setDepartmentId(Long departmentId) {
         this.departmentId = departmentId;
+    }
+
+    public String getUpdateResult() {
+        return updateResult;
+    }
+
+    public void setUpdateResult(String updateResult) {
+        this.updateResult = updateResult;
     }
 }

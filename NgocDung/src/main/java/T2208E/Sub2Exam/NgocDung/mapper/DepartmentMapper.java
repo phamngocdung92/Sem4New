@@ -10,25 +10,4 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DepartmentMapper {
-    public static DepartmentDto entityToDto(DepartmentEntity entity) {
-        if (entity == null) return null;
-        DepartmentDto dto = new DepartmentDto();
-        BeanUtils.copyProperties(entity, dto);
-        if (entity.getCompany() != null) {
-            dto.setCompanyId(entity.getCompany().getId());
-        }
-        return dto;
-    }
-
-    public static DepartmentEntity dtoToEntity(DepartmentDto dto) {
-        if (dto == null) return null;
-        DepartmentEntity entity = new DepartmentEntity();
-        BeanUtils.copyProperties(dto, entity);
-        if (dto.getCompanyId() != null) {
-            CompanyEntity company = new CompanyEntity();
-            company.setId(dto.getCompanyId());
-            entity.setCompany(company);
-        }
-        return entity;
-    }
 }

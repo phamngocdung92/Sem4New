@@ -1,9 +1,10 @@
-package T2208E.Sub2Exam.NgocDung.dto;
+package T2208E.Sub2Exam.NgocDung.dto.responseDto.pkgResDepartment;
+
+import T2208E.Sub2Exam.NgocDung.dto.ShowingResultDto;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
-public class DepartmentDto extends ShowingResultDto {
+public class ResDetailDeptDto extends ShowingResultDto {
     private Long id;
     private String name;
     private String createdBy;
@@ -11,6 +12,23 @@ public class DepartmentDto extends ShowingResultDto {
     private String updatedBy;
     private LocalDateTime updatedTime;
     private Long companyId;
+    private int numberOfEmployee;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getCreatedBy() {
         return createdBy;
@@ -44,27 +62,19 @@ public class DepartmentDto extends ShowingResultDto {
         this.updatedTime = updatedTime;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Long getCompanyId() {
         return companyId;
     }
 
     public void setCompanyId(Long companyId) {
         this.companyId = companyId;
+    }
+
+    public int getNumberOfEmployee() {
+        return numberOfEmployee;
+    }
+
+    public void setNumberOfEmployee(int numberOfEmployee) {
+        this.numberOfEmployee = numberOfEmployee;
     }
 }

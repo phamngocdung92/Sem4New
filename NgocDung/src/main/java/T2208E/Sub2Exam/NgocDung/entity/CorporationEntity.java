@@ -2,6 +2,7 @@ package T2208E.Sub2Exam.NgocDung.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -10,10 +11,51 @@ public class CorporationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "corporation")
+    @Column(name = "created_by")
+    private String createdBy;
+    @Column(name = "created_time")
+    private LocalDateTime createdTime;
+    @Column(name = "updated_by")
+    private String updatedBy;
+    @Column(name = "updated_time")
+    private LocalDateTime updatedTime;
+    @OneToMany(mappedBy = "corporation", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<CompanyEntity> companies;
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public LocalDateTime getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(LocalDateTime createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+    public LocalDateTime getUpdatedTime() {
+        return updatedTime;
+    }
+
+    public void setUpdatedTime(LocalDateTime updatedTime) {
+        this.updatedTime = updatedTime;
+    }
 
     public Long getId() {
         return id;

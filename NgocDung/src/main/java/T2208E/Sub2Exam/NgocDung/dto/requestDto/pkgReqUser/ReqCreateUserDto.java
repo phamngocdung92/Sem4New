@@ -1,9 +1,8 @@
-package T2208E.Sub2Exam.NgocDung.dto;
+package T2208E.Sub2Exam.NgocDung.dto.requestDto.pkgReqUser;
 
 import java.time.LocalDateTime;
 
-public class UserDto extends ShowingResultDto {
-    private Long id;
+public class ReqCreateUserDto {
     private String username;
     private String firstname;
     private String lastname;
@@ -13,14 +12,6 @@ public class UserDto extends ShowingResultDto {
     private String updatedBy;
     private LocalDateTime updatedTime;
     private Long departmentId;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;

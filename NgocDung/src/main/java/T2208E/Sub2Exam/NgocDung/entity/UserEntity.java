@@ -1,24 +1,37 @@
 package T2208E.Sub2Exam.NgocDung.entity;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "users")
-public class UserEntity { @Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UserEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "username")
     private String username;
+    @Column(name = "firstname")
     private String firstname;
+    @Column(name = "lastname")
     private String lastname;
+    @Column(name = "address")
     private String address;
+    @Column(name = "created_by")
     private String createdBy;
+    @Column(name = "created_time")
     private LocalDateTime createdTime;
+    @Column(name = "updated_by")
     private String updatedBy;
+    @Column(name = "updated_time")
     private LocalDateTime updatedTime;
 
-    @ManyToOne
-    @JoinColumn(name = "department_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id", nullable = false)
     private DepartmentEntity department;
 
     public Long getId() {
