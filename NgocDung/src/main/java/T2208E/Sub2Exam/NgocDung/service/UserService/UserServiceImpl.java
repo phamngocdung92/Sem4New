@@ -13,12 +13,18 @@ import T2208E.Sub2Exam.NgocDung.entity.UserEntity;
 import T2208E.Sub2Exam.NgocDung.repository.DepartmentRepository;
 import T2208E.Sub2Exam.NgocDung.repository.UserRepository;
 import T2208E.Sub2Exam.NgocDung.specification.UserSpecification;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -148,6 +154,42 @@ public class UserServiceImpl implements UserService{
             e.printStackTrace();
             result =  "Delete user failed!";
             return result;
+        }
+    }
+
+    //download user file
+    @Override
+    public String downloadUserFile() {
+        List<UserEntity> dataUser = userRepository.findAll();
+        String folderPath = CommonProperties.getHomeDirectory();
+        String fileName = "UserExport_" + CommonProperties.getDateExport() + ".xlsx";
+        File file = new File(folderPath + File.separator +fileName);
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            Workbook workbook = new XSSFWorkbook();
+
+            Sheet sheet = workbook.createSheet("Users");
+            int rowIndex = 0;
+            Row headerRow = sheet.createRow(rowIndex++);
+            headerRow.createCell(0).setCellValue("ID");
+            headerRow.createCell(1).setCellValue("Username");
+            headerRow.createCell(2).setCellValue("Address");
+            headerRow.createCell(3).setCellValue("Department");
+            headerRow.createCell(4).setCellValue("Company");
+            for (UserEntity user: dataUser){
+                Row row = sheet.createRow(rowIndex++);
+                row.createCell(0).setCellValue(user.getId());
+                row.createCell(1).setCellValue(user.getUsername());
+                row.createCell(2).setCellValue(user.getAddress());
+                row.createCell(3).setCellValue(user.getDepartment().getName());
+                row.createCell(4).setCellValue(user.getDepartment().getCompany().getName());
+            }
+            workbook.write(fos);
+            return folderPath + File.separator + fileName;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return "Download file failed!";
         }
     }
 }

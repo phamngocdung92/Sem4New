@@ -33,4 +33,8 @@ public class UserController {
     public ResponseEntity<?> deleteUser(@RequestParam Long id) {
         return ResponseEntity.ok(userService.deleteUser(id));
     }
+    @GetMapping("/downloadUserFile")
+    public ResponseEntity<?> downloadUserFile() {
+        return ResponseEntity.ok(userService.downloadUserFile());
+    }
 }

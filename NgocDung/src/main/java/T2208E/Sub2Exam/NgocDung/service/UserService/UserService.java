@@ -16,4 +16,5 @@ public interface UserService {
     ResCreateUserDto createUser(ReqCreateUserDto inputDto);
     String updateUser(ReqUpdateUserDto inputDto, Long id);
     String deleteUser(Long id);
+    String downloadUserFile();
 }
