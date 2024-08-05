@@ -1,0 +1,26 @@
+CREATE TABLE Manufacturers (
+    ManufacturerId INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255) NOT NULL,
+    Origin VARCHAR(255),
+    Description TEXT,
+    createdBy INT,
+    createdTime DATETIME,
+    updatedBy INT,
+    updatedTime DATETIME
+);
+
+CREATE TABLE Products (
+    ProductId INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255) NOT NULL,
+    Category VARCHAR(255),
+    Description TEXT,
+    ImageURL VARCHAR(255),
+    Price DECIMAL(10, 2),
+    Discount DECIMAL(5, 2),
+    ManufacturerId INT,
+    createdBy INT,
+    createdTime DATETIME,
+    updatedBy INT,
+    updatedTime DATETIME,
+    FOREIGN KEY (ManufacturerId) REFERENCES Manufacturers(ManufacturerId) ON DELETE RESTRICT
+);
