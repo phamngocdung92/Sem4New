@@ -2,6 +2,7 @@ package T2208E.Sub2Exam.NgocDung.controller;
 
 import T2208E.Sub2Exam.NgocDung.dto.requestDto.pkgReqStudent.ReqAddScoreStudent;
 import T2208E.Sub2Exam.NgocDung.dto.requestDto.pkgReqStudent.ReqCreateStudent;
+import T2208E.Sub2Exam.NgocDung.dto.requestDto.pkgReqStudent.ReqShowScore;
 import T2208E.Sub2Exam.NgocDung.service.ScoreService.ScoreService;
 import T2208E.Sub2Exam.NgocDung.service.StudentService.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,9 @@ public class StudentController {
     @PostMapping("/addScore")
     public ResponseEntity<?> addScore(@RequestBody ReqAddScoreStudent inputDto ) {
         return ResponseEntity.ok(scoreService.addScore(inputDto));
+    }
+    @PostMapping("/showScore")
+    public ResponseEntity<?> showScore(@RequestBody ReqShowScore inputDto ) {
+        return ResponseEntity.ok(studentService.showStudentScore(inputDto));
     }
 }
